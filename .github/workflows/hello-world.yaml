@@ -46,10 +46,10 @@ jobs:
     - name: 'run checkout'
       run: ./ci/build-app.sh
     - name: Upload built code
-        uses: actions/upload-artifact@v2
-        with:
-          name: built-code
-          path: .
+      uses: actions/upload-artifact@v2
+      with:
+        name: built-code
+        path: .
   docker:
     name: 'Docker Image'
     needs: [build, unit-test]
