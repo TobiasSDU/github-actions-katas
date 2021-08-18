@@ -7,7 +7,7 @@ on: push
 jobs:
   clone-repo:
     name: 'Clone Repo'
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - name: Upload code
@@ -17,7 +17,7 @@ jobs:
           path: .
   unit-test:
     name: 'Unit Test'
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: [clone-repo]
     container: gradle:6-jdk11
     steps:
@@ -32,7 +32,7 @@ jobs:
       run: ./ci/unit-test-app.sh
   build:
     name: 'Build'
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: [clone-repo]
     container: gradle:6-jdk11
     steps:
@@ -53,7 +53,7 @@ jobs:
   docker:
     name: 'Docker Image'
     needs: [build, unit-test]
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Download code
         uses: actions/download-artifact@v2
@@ -72,7 +72,7 @@ jobs:
   component-test:
     name: 'Component Test'
     needs: [docker]
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Download code
         uses: actions/download-artifact@v2
