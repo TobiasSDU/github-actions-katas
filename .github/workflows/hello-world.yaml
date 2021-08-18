@@ -1,12 +1,25 @@
 name: 'hello-world-action'
 on: push
 jobs:
-  hello-job:
+  clone-repo:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
       - uses: actions/checkout@v2
       - name: 'run checkout'
         run: ./ci/build-app.sh
+      - name: Upload code
+        uses: actions/upload-artifact@v2
+        with:
+          name: code
+          path: .
+  unit-test:
+    runs-on: ubuntu-latest
+      steps:
+      - name: Download code
+        uses: actions/download-artifact@v2
+        with:
+          name: code
+          path: .
       - name: 'unit tests'
         run: ./ci/unit-test-app.sh
