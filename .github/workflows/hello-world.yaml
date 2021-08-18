@@ -67,7 +67,8 @@ jobs:
           password: ${{ env.docker_password }}
       - name: Export GIT-COMMIT
         run: export GIT_COMMIT="GA-$GITHUB_SHA"
-      - name: Push Docker image
-        run: chmod +x ./ci/push-docker.sh && ./ci/push-docker.sh
       - name: Build Docker image
         run: chmod +x ./ci/build-docker.sh && ./ci/build-docker.sh
+      - name: Push Docker image
+        run: chmod +x ./ci/push-docker.sh && ./ci/push-docker.sh
+      
