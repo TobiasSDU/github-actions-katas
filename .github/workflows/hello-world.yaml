@@ -22,5 +22,7 @@ jobs:
       with:
         name: code
         path: .
+    - name: 'change permissions'
+      run: chmod +x ./ci/unit-test-app.sh
     - name: 'unit tests'
       run: ./ci/unit-test-app.sh
