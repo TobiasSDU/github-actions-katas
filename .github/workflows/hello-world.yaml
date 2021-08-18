@@ -37,5 +37,7 @@ jobs:
       with:
         name: code
         path: .
+    - name: 'change permissions'
+      run: chmod +x ./ci/build-app.sh
     - name: 'run checkout'
       run: ./ci/build-app.sh
