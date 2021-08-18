@@ -72,7 +72,7 @@ jobs:
   component-test:
     name: 'Component Test'
     needs: [docker]
-    runs-on: self-hosted
+    runs-on: [self-hosted]
     steps:
       - name: Download code
         uses: actions/download-artifact@v2
