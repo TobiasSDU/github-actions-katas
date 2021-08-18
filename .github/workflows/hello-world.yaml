@@ -38,4 +38,4 @@ jobs:
         name: code
         path: .
     - name: 'run checkout'
-        run: ./ci/build-app.sh
+      run: ./ci/build-app.sh
