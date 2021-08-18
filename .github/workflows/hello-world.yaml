@@ -80,5 +80,5 @@ jobs:
           name: built-code
           path: .
       - name: Run component test
-        run: export GIT_COMMIT="GA-$GITHUB_SHA" && chmod +x ./ci/component-test.sh && ./ci/component-test.sh
+        run: export GIT_COMMIT="GA-$GITHUB_SHA" && chmod +x ci/component-test.sh && ci/component-test.sh
       
