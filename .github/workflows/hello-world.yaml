@@ -69,4 +69,16 @@ jobs:
         run: export GIT_COMMIT="GA-$GITHUB_SHA" && chmod +x ./ci/build-docker.sh && ./ci/build-docker.sh
       - name: Push Docker image
         run: export GIT_COMMIT="GA-$GITHUB_SHA" && chmod +x ./ci/push-docker.sh && ./ci/push-docker.sh
+  component-test:
+    name: 'Component Test'
+    needs: [docker]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ env.docker_username }}
+          password: ${{ env.docker_password }}
+      - name: Run component test
+        run: chmod +x ./ci/component-test.sh && .ci/component-test.sh
       
