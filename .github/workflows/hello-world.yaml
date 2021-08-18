@@ -3,11 +3,11 @@ on: push
 jobs:
   hello-job:
     runs-on: ubuntu-latest
+    container: grade:6-jdk11
     steps:
-      - name: 'print-hello'
-        run: echo 'Hello, World!'
-      - name: 'print-more'
-        run: echo 'Guten huten, Frau Tuten!'
+      - uses: actions/checkout@v2
+      - name: 'run checkout'
+        run: ci/build-app.sh
   unit-test:
     runs-on: ubuntu-latest
     needs: [hello-job]
