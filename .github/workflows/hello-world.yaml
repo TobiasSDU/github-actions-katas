@@ -85,5 +85,5 @@ jobs:
           username: ${{ env.docker_username }}
           password: ${{ env.docker_password }}
       - name: Run component test
-        run: chmod +x ./ci/component-test.sh && .ci/component-test.sh
+        run: chmod +x ./ci/component-test.sh && ./ci/component-test.sh
       
